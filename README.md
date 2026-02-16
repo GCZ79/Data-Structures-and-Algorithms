@@ -2,7 +2,7 @@
 Analysis of runtime and memory usage for selected data structures, with working code that sorts and prints a list of Computer Science courses in alphanumeric order
 
 ## What was the problem you were solving in the projects for this course?
---------------------------------
+
 ### Answer
 
 ## How did you approach the problem? Consider why data structures are important to understand.
