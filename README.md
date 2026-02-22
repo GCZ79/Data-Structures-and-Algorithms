@@ -43,4 +43,12 @@ Another major takeaway was the value of modular design. Separating the program i
 The prerequisite validation requirement also introduced me to what I think of as two-pass thinking. I learned that some problems cannot be solved correctly in a single step, and that processing data in stages can be necessary to guarantee accuracy. That idea applies far beyond this project and changed how I approach more complex problems.
 
 ## How has your work on this project evolved the way you write programs that are maintainable, readable, and adaptable?
-#### Answer
+This project helped me improve my coding practices in several important ways.
+
+One of the biggest lessons was about maintainability through meaningful comments. I learned that good comments should explain not only what the code is doing, but also why certain design decisions were made. For example, documenting why the BST uses an in-order traversal to produce automatic sorting makes the reasoning behind the implementation clear for anyone reading the code later, including myself. Each function now begins with a clear description of its purpose, and more complex sections include inline explanations to clarify the logic.
+
+I also focused more on readability by organizing the program into clearly defined sections such as the Course structure, BST class, utility functions, and the main function. Using descriptive variable names like validCourseCount and prerequisiteFound helps the code communicate its intent without needing excessive explanation. Consistent formatting, indentation, and spacing also made a noticeable difference in how easy the program is to follow.
+
+This project also helped me to refine my approach to error handling. Instead of allowing the program to fail when something goes wrong, I began planning for common problems such as missing files, invalid input, or empty datasets. The temporary tree loading strategy is a good example of this mindset, since it protects existing user data when a loading operation fails.
+
+Overall, I now write code with the expectation that it will need to be maintained or modified later. I now see clear structure, meaningful documentation, and strong error handling as essential elements of creating dependable, professional software rather than optional improvements.
