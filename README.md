@@ -22,17 +22,25 @@ The two-pass loading algorithm I implemented also reflects this understanding. I
 ## How did you overcome any roadblocks you encountered while going through the activities or project?
 I encountered several roadblocks that required systematic problem-solving:
 
-Build Issue: My initial roadblock was Visual Studio reporting a successful build but not creating an executable. I learned to read MSBuild output carefully and discovered the ClCompile collection was empty—no source files were added to the project. This taught me the importance of understanding the build system, not just the code.
+• Build Issue: My initial roadblock was Visual Studio reporting a successful build but not creating an executable. I learned to read MSBuild output carefully and discovered the ClCompile collection was empty—no source files were added to the project. This taught me the importance of understanding the build system, not just the code.
 
-Data Preservation Problem: During testing, I found that failed file loads would wipe out existing course data—a serious usability problem. If an advisor tried loading a file but encountered an error or changed their mind, all previously loaded courses disappeared.
+• Data Preservation Problem: During testing, I found that failed file loads would wipe out existing course data—a serious usability problem. If an advisor tried loading a file but encountered an error or changed their mind, all previously loaded courses disappeared.
 I redesigned the loading mechanism to be non-destructive. New data loads into a separate tree structure first. All file reading, parsing, and prerequisite validation happens in this isolated space. The original data remains active and accessible. Only a completely successful load triggers replacement of the old tree.
 This design protects advisors from accidental data loss and handles edge cases like typos in filenames, corrupted files, or simply deciding not to load after all.
 
-Input Validation: I initially had simple validation but realized users could enter empty fields or invalid prerequisites. I enhanced the validation to check for empty course numbers/names with contextual error messages showing what data was present, making debugging much easier for users.
+• Input Validation: I initially had simple validation but realized users could enter empty fields or invalid prerequisites. I enhanced the validation to check for empty course numbers/names with contextual error messages showing what data was present, making debugging much easier for users.
 The key lesson was to test thoroughly and think about what could go wrong, since applying defensive programming creates better user experiences.
 
 ## How has your work on this project expanded your approach to designing software and developing programs?
-#### Answer
+This project really changed the way I think about software design and development.
+
+I learned to focus on the algorithm before jumping into coding. Now I start by outlining pseudocode and thinking about runtime complexity first. Looking at the Big-O performance early helps me choose the right approach from the beginning instead of trying to fix performance problems later.
+
+It also reinforced the importance of designing with the user in mind. Adding the file-loading submenu made me realize that good software is not just about code that works, but about how people actually interact with it. Implementing the temporary tree to preserve existing data showed me that even a technically correct solution can be improved when real user behavior and edge cases are considered.
+
+Another major takeaway was the value of modular design. Separating the program into focused functions such as loadCourses, printCourseInfo, split, and toUpper made the system easier to test, debug, and maintain. Giving each function a single responsibility helped keep the code organized and easier to extend.
+
+The prerequisite validation requirement also introduced me to what I think of as two-pass thinking. I learned that some problems cannot be solved correctly in a single step, and that processing data in stages can be necessary to guarantee accuracy. That idea applies far beyond this project and changed how I approach more complex problems.
 
 ## How has your work on this project evolved the way you write programs that are maintainable, readable, and adaptable?
 #### Answer
