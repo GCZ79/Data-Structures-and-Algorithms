@@ -20,7 +20,16 @@ Understanding data structures was critical here because the wrong choice could i
 The two-pass loading algorithm I implemented also reflects this understanding. I first loaded all courses into the structure, then performed prerequisite validation afterward. This approach ensured that every prerequisite could be verified efficiently while maintaining good memory usage and search performance.
 
 ## How did you overcome any roadblocks you encountered while going through the activities or project?
-#### Answer
+I encountered several roadblocks that required systematic problem-solving:
+
+Build Issue: My initial roadblock was Visual Studio reporting a successful build but not creating an executable. I learned to read MSBuild output carefully and discovered the ClCompile collection was empty—no source files were added to the project. This taught me the importance of understanding the build system, not just the code.
+
+Data Preservation Problem: During testing, I found that failed file loads would wipe out existing course data—a serious usability problem. If an advisor tried loading a file but encountered an error or changed their mind, all previously loaded courses disappeared.
+I redesigned the loading mechanism to be non-destructive. New data loads into a separate tree structure first. All file reading, parsing, and prerequisite validation happens in this isolated space. The original data remains active and accessible. Only a completely successful load triggers replacement of the old tree.
+This design protects advisors from accidental data loss and handles edge cases like typos in filenames, corrupted files, or simply deciding not to load after all.
+
+Input Validation: I initially had simple validation but realized users could enter empty fields or invalid prerequisites. I enhanced the validation to check for empty course numbers/names with contextual error messages showing what data was present, making debugging much easier for users.
+The key lesson was to test thoroughly and think about what could go wrong, since applying defensive programming creates better user experiences.
 
 ## How has your work on this project expanded your approach to designing software and developing programs?
 #### Answer
